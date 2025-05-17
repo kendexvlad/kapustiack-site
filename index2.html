@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vlad Dev Hub</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #0a0a0a;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      color: #eee;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      position: relative;
+    }
+
+    section {
+      scroll-snap-align: start;
+      min-height: 100vh;
+      width: 100%;
+      padding: 4rem 2rem;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #00ffcc;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px #00ffcc66;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: #39ff14;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 6px #39ff1444;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 700px;
+      text-align: center;
+    }
+
+    .subtitle-bg {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3rem;
+      color: #ffffff08;
+      font-weight: bold;
+      pointer-events: none;
+      z-index: 0;
+      white-space: nowrap;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    .contact a {
+      color: #00ffcc;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+
+    .devlog, .progress, .mystery, .launch {
+      background: #111;
+      border-left: 5px solid #00ffcc;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffcc22;
+      width: 90%;
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .feature-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #2f2f2f;
+      box-shadow: 0 0 10px #00ffcc10;
+      transition: 0.3s ease;
+      width: 220px;
+      text-align: center;
+    }
+
+    .card:hover {
+      background: #222;
+      box-shadow: 0 0 20px #00ffcc44;
+      transform: translateY(-4px);
+    }
+
+    .progress-bar {
+      margin-top: 1rem;
+      background: #333;
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      background: linear-gradient(to right, #00ffcc, #39ff14);
+      height: 100%;
+      width: 1%;
+      animation: fillProgress 2s ease-out forwards;
+    }
+
+    @keyframes fillProgress {
+      from { width: 0%; }
+      to { width: 1%; }
+    }
+
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    footer {
+      font-size: 0.9rem;
+      color: #555;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* NAVIGATION DOTS */
+    .nav-dots {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #555;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: #00ffcc;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles" class="particles"></canvas>
+
+  <!-- SECTION NAVIGATION -->
+  <div class="nav-dots">
+    <div class="dot" data-target="home"></div>
+    <div class="dot" data-target="devlog"></div>
+    <div class="dot" data-target="progress"></div>
+    <div class="dot" data-target="mystery"></div>
+    <div class="dot" data-target="launch"></div>
+  </div>
+
+  <!-- SECTION 1: HOME -->
+  <section id="home">
+    <div class="subtitle-bg">So check back soon for something amazing...</div>
+    <h1>Vlad is Still Developing</h1>
+    <p>Ask me anything:</p>
+    <p class="contact">
+      <a href="mailto:vlad.kapustiack2007@gmail.com">Email</a> |
+      <a href="https://snapchat.com/add/smallvladd" target="_blank">Snapchat</a>
+    </p>
+  </section>
+
+  <!-- SECTION 2: DEVLOG -->
+  <section id="devlog">
+    <h2 class="section-title">🛠️ Dev Roadmap</h2>
+    <div class="feature-cards">
+      <div class="card">Landing Page (in progress)</div>
+      <div class="card">Backend with Flask</div>
+      <div class="card">Google Login Integration</div>
+      <div class="card">Gym Progress Tracker</div>
+      <div class="card">Reminders & Scheduling</div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: PROGRESS -->
+  <section id="progress">
+    <h2 class="section-title">📊 Progress Tracker</h2>
+    <div class="progress">
+      <p>1% Complete</p>
+      <div class="progress-bar">
+        <div class="progress-bar-fill"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: MYSTERY PANEL -->
+  <section id="mystery">
+    <h2 class="section-title">🔐 Status Access</h2>
+    <div class="mystery">
+      <p>This version is a private work-in-progress hub. Features are being silently prototyped. Access is limited.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5: LAUNCH -->
+  <section id="launch">
+    <h2 class="section-title">🚀 Launch Status</h2>
+    <div class="launch">
+      <p>Haven’t launched yet. Check back later for the official version.</p>
+    </div>
+    <footer>&copy; 2025 Vlad Kapustiack. All rights reserved.</footer>
+  </section>
+
+  <!-- PARTICLES SCRIPT -->
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createParticles() {
+      particles = [];
+      for (let i = 0; i < 100; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2 + 1,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: (Math.random() - 0.5) * 0.5
+        });
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ffcc';
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+      }
+      requestAnimationFrame(animateParticles);
+    }
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createParticles();
+    });
+
+    resizeCanvas();
+    createParticles();
+    animateParticles();
+
+    // Section navigation dots
+    const dots = document.querySelectorAll('.dot');
+    const sections = document.querySelectorAll('section');
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        document.getElementById(dot.dataset.target).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      let index = 0;
+      sections.forEach((section, i) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2) index = i;
+      });
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    });
+  </script>
+</body>
+</html>
